@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donor Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container mt-4" id="donor-dashboard">
+    <h2 class="mb-4 text-center">Donor Dashboard</h2>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card shadow-sm p-3">
+          <h5>Make a Donation</h5>
+          <form id="donationForm">
+            <div class="mb-3">
+              <label for="projectSelect" class="form-label">Choose Project</label>
+              <select id="projectSelect" class="form-select" required>
+                <option value="">Select a project</option>
+                <option value="Food Aid">Food Aid for Families</option>
+                <option value="Medical Aid">Medical Aid Program</option>
+                <option value="Education Support">Education Support Initiative</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="donationAmount" class="form-label">Amount (USD)</label>
+              <input type="number" id="donationAmount" class="form-control" placeholder="Enter amount" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Donate Now</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card shadow-sm p-3">
+          <h5>Beneficiaries List</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Family A - Received Food Kit</li>
+            <li class="list-group-item">Family B - Received Medical Aid</li>
+            <li class="list-group-item">Family C - Education Funded</li>
+          </ul>
+          <button class="btn btn-primary btn-sm mt-3">View More Beneficiaries</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card shadow-sm p-3">
+          <h5>Your Previous Donations</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">500 tk- Food Aid (July)</li>
+            <li class="list-group-item">1000 tk- Medical Aid (June)</li>
+          </ul>
+          <button class="btn btn-info btn-sm mt-3">Download Receipt</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card shadow-sm p-3">
+          <h5>Generate Impact Report</h5>
+          <p>View how your contributions helped beneficiaries.</p>
+          <button class="btn btn-dark btn-sm">Generate Report</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('donationForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const project = document.getElementById('projectSelect').value;
+      const amount = document.getElementById('donationAmount').value;
+      alert(`Thank you for donating $${amount} to ${project}.`);
+      this.reset();
+    });
+  </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

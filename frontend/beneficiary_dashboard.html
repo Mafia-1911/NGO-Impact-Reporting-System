@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beneficiary Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container mt-4" id="beneficiary-dashboard">
+    <h2 class="mb-4 text-center">Beneficiary Dashboard</h2>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card shadow-sm p-3">
+          <h5>Your Allocations</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Food Kit - Received on 15th July</li>
+            <li class="list-group-item">Medical Aid - 200tk provided</li>
+            <li class="list-group-item">Education Support - 100tk for school supplies</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card shadow-sm p-3">
+          <h5>Collection Point Information</h5>
+          <p>Visit: Kurigram District Center</p>
+          <p>Contact: +880 123 456 789</p>
+          <p>Open Hours: 9:00 AM - 5:00 PM</p>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="card shadow-sm p-3">
+          <h5>Fund Usage Reporting</h5>
+          <form id="fundUsageForm">
+            <div class="mb-3">
+              <label for="fundAmount" class="form-label">Amount Used (USD)</label>
+              <input type="number" id="fundAmount" class="form-control" placeholder="Enter amount used" required>
+            </div>
+            <div class="mb-3">
+              <label for="usageDetails" class="form-label">Usage Details</label>
+              <textarea id="usageDetails" class="form-control" rows="3" placeholder="Describe how you used the funds" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Report</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('fundUsageForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Your fund usage report has been submitted successfully.');
+      this.reset();
+    });
+  </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

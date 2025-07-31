@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NGO Project Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container mt-4" id="admin-dashboard">
+    <h2 class="mb-4 text-center">Admin Dashboard</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card shadow-sm p-3">
+          <h5>Beneficiaries</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Family A - Food Kit</li>
+            <li class="list-group-item">Family B - Medical Aid</li>
+            <li class="list-group-item">Family C - Education Support</li>
+          </ul>
+          <button class="btn btn-sm btn-primary mt-3">Add Beneficiary</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm p-3">
+          <h5>Donors List</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">John Doe - $500</li>
+            <li class="list-group-item">Jane Smith - $1200</li>
+            <li class="list-group-item">Ali Khan - $700</li>
+          </ul>
+          <button class="btn btn-sm btn-success mt-3">Add Donor</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm p-3">
+          <h5>Members List</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Staff 1 - Field Officer</li>
+            <li class="list-group-item">Staff 2 - Coordinator</li>
+            <li class="list-group-item">Staff 3 - Volunteer</li>
+          </ul>
+          <button class="btn btn-sm btn-warning mt-3">Add Member</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm p-3">
+          <h5>Project Summary</h5>
+          <p>Total Projects: 5</p>
+          <p>Active Projects: 3</p>
+          <button class="btn btn-sm btn-info">Generate Report</button>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm p-3">
+          <h5>Budget Tracking</h5>
+          <p>Total Budget: $120,000</p>
+          <p>Disbursed: $90,000</p>
+          <div class="progress">
+            <div class="progress-bar bg-success" style="width: 75%">75%</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm p-3">
+          <h5>Impact Report</h5>
+          <p>"1,200 families received food kits in Kurigram district."</p>
+          <button class="btn btn-sm btn-dark">Export Report</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
