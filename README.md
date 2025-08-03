@@ -5,7 +5,7 @@
 → To help NGOs manage projects, track fund utilization, monitor outcomes, and transparently report impact to donors and regulators   
 → To help user donate to beneficiaries directly 
 
-ER Diagram -> https://app.diagrams.net/?splash=0#G1QIU1kPRN7ijQUn3EMkjGxYVHjc8b6Zs7#%7B%22pageId%22%3A%22hw2SvorGrzuGAmRxIAfh%22%7D
+[ER Diagram](https://app.diagrams.net/?splash=0#G1QIU1kPRN7ijQUn3EMkjGxYVHjc8b6Zs7#%7B%22pageId%22%3A%22hw2SvorGrzuGAmRxIAfh%22%7D)
 
 **Core Features:**
 
