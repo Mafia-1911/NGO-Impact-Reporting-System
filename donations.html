@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donations - ImpactTracker</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/donations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-brand">
+                    <i class="fas fa-heart"></i>
+                    <span>ImpactTracker</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="projects.html" class="nav-item">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Projects</span>
+                </a>
+                <a href="beneficiaries.html" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Beneficiaries</span>
+                </a>
+                <a href="donations.html" class="nav-item active">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span>Donations</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <h1>Donations</h1>
+                    <span class="breadcrumb">Track All Donations</span>
+                </div>
+                <div class="top-bar-right">
+                    <!-- Export to CSV -->
+                    <button class="btn btn-outline" id="exportBtn">
+                        <i class="fas fa-download"></i>
+                        Export
+                    </button>
+                    <!-- Record Donation -->
+                    <button class="btn btn-primary" id="recordDonationBtn">
+                        <i class="fas fa-plus"></i>
+                        Record Donation
+                    </button>
+                </div>
+            </header>
+
+            <!-- Donations Content -->
+            <div class="donations-content">
+                <!-- Donation Stats -->
+                <div class="donation-stats">
+                    <!-- Stat Cards unchanged -->
+                </div>
+
+                <!-- Filters and Search -->
+                <div class="filters-section">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchDonations" placeholder="Search donations by donor or project...">
+                    </div>
+                    <div class="filters">
+                        <select id="projectFilter" class="form-select">
+                            <option value="all">All Projects</option>
+                            <option value="education">Education Program</option>
+                            <option value="healthcare">Healthcare Initiative</option>
+                            <option value="water">Clean Water Project</option>
+                        </select>
+                        <select id="amountFilter" class="form-select">
+                            <option value="all">All Amounts</option>
+                            <option value="0-100">$0 - $100</option>
+                            <option value="100-500">$100 - $500</option>
+                            <option value="500-1000">$500 - $1,000</option>
+                            <option value="1000+">$1,000+</option>
+                        </select>
+                        <input type="date" id="dateFilter" class="form-select">
+                    </div>
+                </div>
+
+                <!-- Donations Table -->
+                <div class="table-container">
+                    <table class="donations-table" id="donationsTable">
+                        <thead>
+                            <tr>
+                                <th onclick="sortTable('donor')" class="sortable">
+                                    Donor <i class="fas fa-sort"></i>
+                                </th>
+                                <th onclick="sortTable('amount')" class="sortable">
+                                    Amount <i class="fas fa-sort"></i>
+                                </th>
+                                <th onclick="sortTable('project')" class="sortable">
+                                    Project <i class="fas fa-sort"></i>
+                                </th>
+                                <th onclick="sortTable('date')" class="sortable">
+                                    Date <i class="fas fa-sort"></i>
+                                </th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="donationsTableBody">
+                            <!-- Table rows dynamically generated -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <div class="pagination-info">
+                        Showing <span id="startItem">1</span> to <span id="endItem">10</span> of <span id="totalItems">0</span> donations
+                    </div>
+                    <div class="pagination-controls">
+                        <button class="pagination-btn" id="prevBtn" onclick="changePage(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span class="pagination-pages" id="paginationPages">
+                            <!-- Page numbers will be dynamically generated -->
+                        </span>
+                        <button class="pagination-btn" id="nextBtn" onclick="changePage(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Donation Details Modal -->
+    <div id="donationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Donation Details</h3>
+                <span class="modal-close" onclick="closeDonationModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="donationModalContent">
+                <!-- Donation details will be dynamically loaded -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ✅ Record Donation Modal -->
+    <div id="recordDonationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Record New Donation</h3>
+                <span class="modal-close" onclick="closeRecordDonationModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="recordDonationForm">
+                    <div class="form-group">
+                        <label for="donorName">Donor Name</label>
+                        <input type="text" id="donorName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="donationAmount">Amount ($)</label>
+                        <input type="number" id="donationAmount" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="donationProject">Project</label>
+                        <select id="donationProject" required>
+                            <option value="">Select Project</option>
+                            <option value="education">Education Program</option>
+                            <option value="healthcare">Healthcare Initiative</option>
+                            <option value="water">Clean Water Project</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="donationDate">Date</label>
+                        <input type="date" id="donationDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="donationStatus">Status</label>
+                        <select id="donationStatus" required>
+                            <option value="completed">Completed</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Donation</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/donations.js"></script>
+</body>
+</html>

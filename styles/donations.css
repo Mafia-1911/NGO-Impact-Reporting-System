@@ -1,0 +1,481 @@
+/* Donations Page Styles */
+
+.donations-content {
+    flex: 1;
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+/* Donation Stats */
+.donation-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.donation-stats .stat-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.donation-stats .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    transition: all 0.3s ease;
+}
+
+.donation-stats .stat-card.primary::before { background: var(--primary-600); }
+.donation-stats .stat-card.success::before { background: var(--success-600); }
+.donation-stats .stat-card.warning::before { background: var(--warning-600); }
+.donation-stats .stat-card.danger::before { background: var(--danger-600); }
+
+.donation-stats .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.donation-stats .stat-card i {
+    font-size: 1.5rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    color: white;
+    margin-bottom: var(--spacing-md);
+}
+
+.donation-stats .stat-card.primary i { background: var(--primary-600); }
+.donation-stats .stat-card.success i { background: var(--success-600); }
+.donation-stats .stat-card.warning i { background: var(--warning-600); }
+.donation-stats .stat-card.danger i { background: var(--danger-600); }
+
+.stat-trend {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.stat-trend.positive {
+    color: var(--success-600);
+}
+
+.stat-trend.negative {
+    color: var(--danger-600);
+}
+
+.stat-trend i {
+    font-size: 0.75rem !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    background: none !important;
+}
+
+/* Table Container */
+.table-container {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+    overflow: hidden;
+}
+
+.donations-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.donations-table thead {
+    background: var(--gray-50);
+}
+
+.donations-table th {
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: left;
+    font-weight: 600;
+    color: var(--gray-700);
+    border-bottom: 1px solid var(--gray-200);
+    font-size: 0.875rem;
+    position: relative;
+}
+
+.donations-table th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.donations-table th.sortable:hover {
+    background: var(--gray-100);
+}
+
+.donations-table th.sortable i {
+    margin-left: var(--spacing-xs);
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+}
+
+.donations-table th.sortable:hover i {
+    opacity: 1;
+}
+
+.donations-table th.sorted i {
+    opacity: 1;
+    color: var(--primary-600);
+}
+
+.donations-table tbody tr {
+    border-bottom: 1px solid var(--gray-100);
+    transition: background-color 0.2s ease;
+}
+
+.donations-table tbody tr:hover {
+    background: var(--gray-50);
+}
+
+.donations-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.donations-table td {
+    padding: var(--spacing-md) var(--spacing-lg);
+    color: var(--gray-700);
+    font-size: 0.875rem;
+    vertical-align: middle;
+}
+
+.donor-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.donor-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--primary-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: var(--primary-600);
+    font-size: 0.75rem;
+    flex-shrink: 0;
+}
+
+.donor-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.donor-name {
+    font-weight: 500;
+    color: var(--gray-900);
+    line-height: 1.2;
+}
+
+.donor-email {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    line-height: 1.2;
+}
+
+.amount-cell {
+    font-weight: 600;
+    color: var(--gray-900);
+}
+
+.amount-large {
+    color: var(--success-600);
+}
+
+.project-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--primary-100);
+    color: var(--primary-700);
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 500;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.project-tag.education { background: var(--primary-100); color: var(--primary-700); }
+.project-tag.healthcare { background: var(--danger-100); color: var(--danger-700); }
+.project-tag.water { background: var(--secondary-100); color: var(--secondary-700); }
+.project-tag.food { background: var(--warning-100); color: var(--warning-700); }
+
+.status-badge {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-xl);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.completed {
+    background: var(--success-100);
+    color: var(--success-700);
+}
+
+.status-badge.pending {
+    background: var(--warning-100);
+    color: var(--warning-700);
+}
+
+.status-badge.processing {
+    background: var(--primary-100);
+    color: var(--primary-700);
+}
+
+.status-badge.failed {
+    background: var(--danger-100);
+    color: var(--danger-700);
+}
+
+.table-actions {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.action-btn {
+    padding: var(--spacing-xs);
+    border: none;
+    background: none;
+    color: var(--gray-500);
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-btn:hover {
+    background: var(--gray-100);
+    color: var(--gray-700);
+}
+
+.action-btn.view:hover {
+    background: var(--primary-100);
+    color: var(--primary-600);
+}
+
+.action-btn.download:hover {
+    background: var(--success-100);
+    color: var(--success-600);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.pagination-info {
+    font-size: 0.875rem;
+    color: var(--gray-600);
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.pagination-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--gray-300);
+    background: white;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--gray-600);
+    font-size: 0.875rem;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: var(--primary-50);
+    border-color: var(--primary-300);
+    color: var(--primary-600);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-pages {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.page-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--gray-300);
+    background: white;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--gray-600);
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-btn:hover {
+    background: var(--primary-50);
+    border-color: var(--primary-300);
+    color: var(--primary-600);
+}
+
+.page-btn.active {
+    background: var(--primary-600);
+    border-color: var(--primary-600);
+    color: white;
+}
+
+/* Donation Modal */
+.donation-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    font-weight: 500;
+    color: var(--gray-600);
+}
+
+.detail-value {
+    color: var(--gray-900);
+    font-weight: 500;
+    text-align: right;
+}
+
+.detail-value.amount {
+    font-size: 1.125rem;
+    color: var(--success-600);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .donation-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .donations-table {
+        font-size: 0.8125rem;
+    }
+    
+    .donations-table th,
+    .donations-table td {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+}
+
+@media (max-width: 768px) {
+    .donations-content {
+        padding: var(--spacing-md);
+    }
+    
+    .donation-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    .donations-table {
+        min-width: 700px;
+    }
+    
+    .pagination {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+    
+    .pagination-controls {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .donation-stats .stat-card {
+        padding: var(--spacing-md);
+    }
+    
+    .donor-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+    
+    .donor-details {
+        align-items: flex-start;
+    }
+    
+    .table-actions {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    
+    .pagination-pages {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

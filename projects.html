@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - ImpactTracker</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/projects.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-brand">
+                    <i class="fas fa-heart"></i>
+                    <span>ImpactTracker</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="projects.html" class="nav-item active">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Projects</span>
+                </a>
+                <a href="beneficiaries.html" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Beneficiaries</span>
+                </a>
+                <a href="donations.html" class="nav-item">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span>Donations</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <h1>Projects</h1>
+                    <span class="breadcrumb">Manage All Projects</span>
+                </div>
+                <div class="top-bar-right">
+                    <button class="btn btn-primary" onclick="showCreateProjectModal()">
+                        <i class="fas fa-plus"></i>
+                        Create Project
+                    </button>
+                </div>
+            </header>
+
+            <!-- Projects Content -->
+            <div class="projects-content">
+                <!-- Project Stats -->
+                <div class="project-stats">
+                    <div class="stat-card primary">
+                        <i class="fas fa-play"></i>
+                        <div class="stat-info">
+                            <span class="stat-number">23</span>
+                            <span class="stat-label">Active Projects</span>
+                        </div>
+                    </div>
+                    <div class="stat-card success">
+                        <i class="fas fa-check"></i>
+                        <div class="stat-info">
+                            <span class="stat-number">17</span>
+                            <span class="stat-label">Completed</span>
+                        </div>
+                    </div>
+                    <div class="stat-card warning">
+                        <i class="fas fa-pause"></i>
+                        <div class="stat-info">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">On Hold</span>
+                        </div>
+                    </div>
+                    <div class="stat-card danger">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div class="stat-info">
+                            <span class="stat-number">2</span>
+                            <span class="stat-label">Behind Schedule</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters-section">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchProjects" placeholder="Search projects...">
+                    </div>
+                    <div class="filters">
+                        <select id="statusFilter" class="form-select">
+                            <option value="all">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="completed">Completed</option>
+                            <option value="on-hold">On Hold</option>
+                        </select>
+                        <select id="categoryFilter" class="form-select">
+                            <option value="all">All Categories</option>
+                            <option value="education">Education</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="water">Water & Sanitation</option>
+                            <option value="food">Food Security</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="projects-grid" id="projectsContainer">
+                    <!-- Project cards will be dynamically generated -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Project Details Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 id="modalProjectTitle">Project Details</h3>
+                <span class="modal-close" onclick="closeProjectModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="modalProjectContent">
+                <!-- Project details will be dynamically loaded -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Project Modal -->
+    <div id="createProjectModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Project</h3>
+                <span class="modal-close" onclick="closeCreateProjectModal()">&times;</span>
+            </div>
+            <form id="createProjectForm" onsubmit="createProject(event)">
+                <div class="form-group">
+                    <label for="projectTitle">Project Title</label>
+                    <input type="text" id="projectTitle" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="projectCategory">Category</label>
+                        <select id="projectCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="education">Education</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="water">Water & Sanitation</option>
+                            <option value="food">Food Security</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="projectGoal">Funding Goal ($)</label>
+                        <input type="number" id="projectGoal" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="startDate">Start Date</label>
+                        <input type="date" id="startDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">End Date</label>
+                        <input type="date" id="endDate" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="projectDescription">Description</label>
+                    <textarea id="projectDescription" rows="4" required></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeCreateProjectModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts/projects.js"></script>
+</body>
+</html>
