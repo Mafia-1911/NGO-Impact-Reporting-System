@@ -64,7 +64,7 @@ The system can be implemented using the following technologies (can be adjusted 
 - **Frontend:** HTML, CSS, JavaScript
 - **Backend:** Node.js, Express.js
 - **Database:** MySQL
-- **Reporting & Analytics:** Chart.js, D3.js
+- **Reporting & Analytics:** Chart.js
 
 ---
 
@@ -74,11 +74,6 @@ The system can be implemented using the following technologies (can be adjusted 
 - Mobile-friendly interface for NGO staff and donors.
 - Multi-language support for global NGOs.
 
----
 
-## License
-This project is open-source and free to use under the [MIT License](LICENSE).
-
----
 
 
