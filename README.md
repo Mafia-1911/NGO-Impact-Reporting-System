@@ -1,9 +1,9 @@
 # NGO Impact Reporting System
 
 ## Contributors
-- Rubayet Hossain Simran(2212048642): Database Management
-- Mushtasin Ahmed(2322175642): Backend Development, security implementations
-- Ahmed Ishmam Arefin(2322035642): Frontend Development, UI/UX design
+- Rubayet Hossain Simran (2212048642): Database Management
+- Mushtasin Ahmed (2322175642): Backend Development, security implementations
+- Ahmed Ishmam Arefin (2322035642): Frontend Development, UI/UX design
 
 ## Project Overview
 The **NGO Impact Reporting System** is a comprehensive platform designed to help non-governmental organizations (NGOs) efficiently manage, track, and report the impact of their projects and donations. It aims to improve transparency, accountability, and data-driven decision-making in the nonprofit sector. 
